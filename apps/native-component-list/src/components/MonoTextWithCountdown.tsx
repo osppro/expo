@@ -43,7 +43,7 @@ function MonoTextWithCountdown({ style, children, timeout = 8000, onCountdownEnd
         useNativeDriver: false,
       }).start(({ finished }) => {
         if (finished) {
-          onCountdownEnded();
+          // onCountdownEnded();
         }
       });
     }
