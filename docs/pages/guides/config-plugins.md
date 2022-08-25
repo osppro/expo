@@ -498,6 +498,31 @@ Because of this reasoning, the root of a Node module is searched instead of righ
 
 To make plugin development easier, we've added plugin support to [`expo-module-scripts`](https://www.npmjs.com/package/expo-module-scripts). Refer to the [config plugins guide](https://github.com/expo/expo/tree/main/packages/expo-module-scripts#-config-plugin) for more info on using TypeScript, and Jest to build plugins.
 
+### Installing dependencies
+
+For plugins that support SDK 46+, it is recommended to use the following set of dependencies:
+
+```json
+{
+  "dependencies": {},
+  "devDependencies": {
+    "@expo/config-types": "^46.0.0",
+    "expo": "^46.0.10"
+  },
+  "peerDependencies": {
+    "expo": ">=46.0.10"
+  }
+}
+```
+
+In your plugin, you can import `@expo/config-plugins` through the `expo` package:
+
+```js
+const { .. } = require('expo/config-plugins');
+```
+
+This will ensure that you are using the version of the `@expo/config-plugins` package that is depended on by the `expo` package.
+
 Plugins will generally have `@expo/config-plugins` installed as a dependency, and `expo-module-scripts`, `@expo/config-types` installed as a devDependencies.
 
 ### Best practices for mods
